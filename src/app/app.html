@@ -14,11 +14,11 @@
     <div class="tasks-info">
       <div class="tasks-info__created">
         <p>Создано задач</p>
-        <span class="tasks-info__count">{{stats.total}}</span>
+        <span class="tasks-info__count">{{stats().total}}</span>
       </div>
       <div class="tasks-info__done">
         <p>Закрыто</p>
-        <span class="tasks-info__count">{{stats.completed}} из {{stats.total}}</span>
+        <span class="tasks-info__count">{{stats().completed}} из {{stats().total}}</span>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
     @for (task of tasks(); track task.id) {
     <app-task [task]="task" (toggle)="toggleTask($event)" (delete)="deleteTask($event)" />
     }
-    @if (stats.total === 0) {
+    @if (stats().total === 0) {
     <p class="tasks__null">Нет задач. Добавьте первую!</p>
     }
   </div>

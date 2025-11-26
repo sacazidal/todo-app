@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { ButtonComponent } from './components/button/button';
 import { InputComponent } from './components/input/input';
 import { TaskComponent } from './components/task/task';
@@ -14,27 +14,20 @@ export class App {
   private taskService = inject(TaskService);
 
   protected tasks = this.taskService.tasks$;
-  protected stats = this.taskService.getStats();
+  protected stats = computed(() => this.taskService.getStats());
 
   protected newTaskText = '';
 
   addTask() {
     this.taskService.addTask(this.newTaskText);
     this.newTaskText = '';
-    this.updateStats();
   }
 
   toggleTask(id: number) {
     this.taskService.toggleCompleted(id);
-    this.updateStats();
   }
 
   deleteTask(id: number) {
     this.taskService.deleteTask(id);
-    this.updateStats();
-  }
-
-  private updateStats() {
-    this.stats = { ...this.taskService.getStats() };
   }
 }
