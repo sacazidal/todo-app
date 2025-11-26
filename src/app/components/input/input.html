@@ -1,0 +1,2 @@
+<input type="text" placeholder={{textPlaceholder}} class="new-task__input" [value]="value" (keydown.enter)="onEnter()"
+  (input)="onInput($any($event.target).value)">
