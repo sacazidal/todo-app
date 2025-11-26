@@ -1,0 +1,23 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/functions" as *;
+@use "../../../styles/mixins" as *;
+
+:host {
+  flex: 1
+}
+
+.new-task__input {
+  width: 100%;
+  line-height: 140%;
+  font-size: rem(12);
+  background: $gray-500;
+  color: $gray-200;
+  border-radius: 8px;
+  border: 1px solid $gray-700;
+  padding: 12px;
+
+  @include media("md") {
+    font-size: rem(16);
+    padding: 16px;
+  }
+}
