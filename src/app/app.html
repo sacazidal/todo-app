@@ -21,14 +21,14 @@
         <span class="tasks-info__count">{{stats().completed}} из {{stats().total}}</span>
       </div>
     </div>
-  </div>
 
-  <div class="tasks">
-    @for (task of tasks(); track task.id) {
-    <app-task [task]="task" (toggle)="toggleTask($event)" (delete)="deleteTask($event)" />
-    }
-    @if (stats().total === 0) {
-    <p class="tasks__null">Нет задач. Добавьте первую!</p>
-    }
+    <div class="tasks">
+      @for (task of tasks(); track task.id) {
+      <app-task [task]="task" (toggle)="toggleTask($event)" (delete)="deleteTask($event)" />
+      }
+      @if (stats().total === 0) {
+      <p class="tasks__null">Нет задач. Добавьте первую!</p>
+      }
+    </div>
   </div>
 </main>
