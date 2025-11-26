@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { Task } from '../models/task';
 
 @Injectable({
@@ -6,7 +6,13 @@ import { Task } from '../models/task';
 })
 export class TaskService {
   private tasks = signal<Task[]>(this.loadFromLocalStorage());
-  readonly tasks$ = this.tasks.asReadonly();
+
+  readonly sortedTasks = computed(() => {
+    return [...this.tasks()].sort((a, b) => {
+      if (a.completed === b.completed) return 0;
+      return a.completed ? 1 : -1;
+    });
+  });
 
   getStats() {
     const tasks = this.tasks();

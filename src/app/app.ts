@@ -13,7 +13,7 @@ import { TaskService } from './services/task';
 export class App {
   private taskService = inject(TaskService);
 
-  protected tasks = this.taskService.tasks$;
+  protected tasks = this.taskService.sortedTasks;
   protected stats = computed(() => this.taskService.getStats());
 
   protected newTaskText = '';
