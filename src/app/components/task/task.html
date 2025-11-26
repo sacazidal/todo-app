@@ -1,0 +1,11 @@
+<div class="task">
+  <button class="task__btn" (click)="toggleClick(task.id)">
+    <img src="/assets/images/check.svg" alt="check" class="task__btn__image">
+  </button>
+
+  <p class="task__text" [class.task__text--completed]="task.completed">{{task.text}}</p>
+
+  <button class="task__btn" (click)="deleteClick(task.id)">
+    <img src="/assets/images/trash.svg" alt="check" class="task__btn__image">
+  </button>
+</div>
