@@ -1,0 +1,16 @@
+@use "variables";
+@use "sass:map";
+
+@mixin media($size) {
+  @if map.has-key(variables.$breakpoints, $size) {
+    $width: map.get(variables.$breakpoints, $size);
+
+    @media (min-width: $width) {
+      @content
+    }
+  }
+
+  @else {
+    @warn "Breakpoint #{$size} not found in $breakpoints."
+  }
+}
